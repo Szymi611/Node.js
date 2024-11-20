@@ -11,11 +11,6 @@ The course provides an in-depth understanding of Node.js, including:
 - Exploring the Deno runtime as an alternative to Node.js.  
 - Best practices for application architecture using the MVC pattern.  
 
-## Repository Structure  
-- **/notes**: Key concepts and summaries from the course.  
-- **/exercises**: Practice problems to solidify the understanding of topics.  
-- **/projects**: Hands-on projects implementing course concepts, such as REST APIs or GraphQL applications.  
-
 ## Current Status  
 I am actively progressing through the course and updating the repository with completed exercises and projects.  
 
