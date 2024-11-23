@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { get } = require('http');
 const path = require('path');
 
 const p = path.join(
@@ -8,16 +7,15 @@ const p = path.join(
   'products.json'
 );
 
-const getProductsFromFile = (cb) => {
+const getProductsFromFile = cb => {
   fs.readFile(p, (err, fileContent) => {
     if (err) {
-      // return [];
-      return cb([]);
+      cb([]);
+    } else {
+      cb(JSON.parse(fileContent));
     }
-    // return JSON.parse(fileContent);
-    cb(JSON.parse(fileContent));
-  })
-}
+  });
+};
 
 module.exports = class Product {
   constructor(title, imageUrl, description, price) {
@@ -28,8 +26,6 @@ module.exports = class Product {
   }
 
   save() {
-    // Should use arrow function otherwise it will
-    // lose its context and this will not refer to the class
     getProductsFromFile(products => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), err => {
