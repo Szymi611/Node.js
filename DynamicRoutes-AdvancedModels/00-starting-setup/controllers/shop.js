@@ -11,16 +11,25 @@ exports.getProducts = (req, res, next) => {
   });
 };
 
+/*************  ✨ Codeium Command ⭐  *************/
+  /**
+   * @description GET /products/:productId
+   * @param {string} req.params.productId - The id of the product to be fetched
+   * @param {object} res - The response object
+   * @param {function} next - The next middleware function
+   * @returns {object} The rendered HTML page
+   */
+/******  45a25cfb-ab5e-402c-8764-d056f4d18848  *******/
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
   Product.findById(prodId, product => {
     res.render('shop/product-detail', {
-      product,
-      pageTitle: product.title + ' details',
-      path: '/products',
-    })
+      product: product,
+      pageTitle: product.title,
+      path: '/products'
+    });
   });
-}
+};
 
 exports.getIndex = (req, res, next) => {
   Product.fetchAll(products => {
@@ -45,7 +54,7 @@ exports.postCart = (req, res, next) => {
     Cart.addProduct(prodId, product.price);
   });
   res.redirect('/cart');
-}
+};
 
 exports.getOrders = (req, res, next) => {
   res.render('shop/orders', {
